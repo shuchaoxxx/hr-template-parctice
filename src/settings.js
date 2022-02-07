@@ -1,7 +1,6 @@
+// node.js的导出用法 使用module.exports导出对象
 module.exports = {
-
-  title: 'Vue Admin Template',
-
+  title: '中台人力资源管理',
   /**
    * @type {boolean} true | false
    * @description Whether fix the header
