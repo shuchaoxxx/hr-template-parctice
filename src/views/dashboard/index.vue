@@ -1,11 +1,14 @@
 <template>
   <div class="dashboard-container">
     <div class="dashboard-text">name: {{ name }}</div>
+    <button @click="IsCheckTimeOut()">测试</button>
+
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
+import { IsCheckTimeOut } from '@/utils/request'
 
 export default {
   name: 'Dashboard',
@@ -13,6 +16,11 @@ export default {
     ...mapGetters([
       'name'
     ])
+  },
+  methods: {
+    IsCheckTimeOut() {
+      IsCheckTimeOut()
+    }
   }
 }
 </script>
