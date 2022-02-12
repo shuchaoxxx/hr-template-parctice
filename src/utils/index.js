@@ -115,3 +115,20 @@ export function param2Obj(url) {
   })
   return obj
 }
+
+/**
+ * 使用递归算法，将数组型数据结构转换成树形结构
+ */
+export function transListToTreeData(list, rootValue) {
+  const arr = []
+  list.forEach(item => {
+    if (item.pid === rootValue) {
+      const children = transListToTreeData(list, item.id)
+      if (children.length) {
+        item.children = children
+      }
+      arr.push(item)
+    }
+  })
+  return arr
+}

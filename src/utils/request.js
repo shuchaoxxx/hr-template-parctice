@@ -29,8 +29,6 @@ service.interceptors.request.use(
 
 // 响应拦截器
 service.interceptors.response.use(response => {
-  debugger
-  console.log('22222')
   const { data, message, success } = response.data
   if (success) {
     return data
