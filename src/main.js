@@ -16,6 +16,8 @@ import '@/icons' // icon
 import '@/permission' // permission control
 
 import * as directives from '@/directives'
+import * as filters from '@/filters'
+import Components from '@/components'
 
 /**
  * If you don't want to use mock-server
@@ -35,8 +37,12 @@ Object.keys(directives).forEach(key => {
   Vue.directive(key, directives[key])
 })
 
-Vue.config.productionTip = false
+Object.keys(filters).forEach((key) => {
+  Vue.filter(key, filters[key])
+})
 
+Vue.config.productionTip = false
+Vue.use(Components)
 new Vue({
   el: '#app',
   router,

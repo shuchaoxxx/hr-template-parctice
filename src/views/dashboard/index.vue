@@ -1,7 +1,10 @@
 <template>
   <div class="dashboard-container">
     <div class="dashboard-text">首页</div>
-    <button @click="IsCheckTimeOut()">测试</button>
+    <PageTools :show-before="true">
+      <el-button slot="before">导出excel</el-button>
+      <el-button slot="after">导入excel</el-button>
+    </PageTools>
 
   </div>
 </template>
@@ -12,11 +15,13 @@ import { IsCheckTimeOut } from '@/utils/request'
 
 export default {
   name: 'Dashboard',
+  components: {},
   computed: {
     ...mapGetters([
       'name'
     ])
   },
+
   methods: {
     IsCheckTimeOut() {
       IsCheckTimeOut()
