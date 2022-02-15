@@ -97,6 +97,7 @@ export default {
       try {
         await this.$refs.addEmployeeRef.validate()
         await addEmployee(this.formData)
+        // 使用this.$parent不能套用UI组件。若套用后，需要
         this.$parent.getEmployeeList()
         this.$parent.showDialog = false
       } catch (error) {
