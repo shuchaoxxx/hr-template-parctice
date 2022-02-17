@@ -18,5 +18,13 @@ export default {
     meta: {
       title: '员工详情'
     }
+  }, {
+    path: 'print/:id', // 二级路由
+    component: () => import('@/views/employees/components/print.vue'), // 动态按需加载组件
+    hidden: true,
+    meta: {
+      title: '打印',
+      icon: 'people'
+    }
   }]
 }

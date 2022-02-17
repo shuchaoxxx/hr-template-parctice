@@ -12,6 +12,17 @@
       <el-card v-loading="loading">
         <el-table border :data="list">
           <el-table-column label="序号" type="index" />
+          <el-table-column label="头像" sortable="" prop="staffPhoto" width="120px">
+            <template v-slot="{row}">
+              <img
+                v-imagerror="require('@/assets/common/head01.jpg')"
+                :src="row.staffPhoto"
+                alt=""
+                style="width:100px; height:100px"
+                @click="showQrcode(row.staffPhoto)"
+              >
+            </template>
+          </el-table-column>
           <el-table-column label="姓名" sortable="" prop="username" />
           <el-table-column label="电话" sortable="" prop="mobile" />
           <el-table-column label="聘用形式" sortable="" :formatter="formatEmployment" prop="formOfEmployment" />
@@ -44,6 +55,12 @@
       </el-card>
       <!-- 新增员工组件 -->
       <AddEmployee :show-dialog.sync="showDialog" />
+      <!-- 二维码弹层 -->
+      <el-dialog title="二维码" :visible.sync="showqrcode">
+        <el-row type="flex" justify="center">
+          <canvas ref="myCanvas" />
+        </el-row>
+      </el-dialog>
     </div>
   </div>
 </template>
@@ -53,6 +70,7 @@ import { getEmployeeList, deleteRole } from '@/api/employees'
 import EmployeeEnum from '@/api/constant/employees'
 import AddEmployee from './components/add-employee'
 import { formatDate } from '@/filters'
+import QrCode from 'qrcode'
 export default {
   components: { AddEmployee },
   data() {
@@ -64,7 +82,8 @@ export default {
         total: 0
       },
       loading: false,
-      showDialog: false
+      showDialog: false,
+      showqrcode: false
     }
   },
   created() {
@@ -134,6 +153,16 @@ export default {
           return item[headers[key]]
         })
       })
+    },
+    showQrcode(url) {
+      if (url) {
+        this.showqrcode = true // 页面渲染是异步的
+        this.$nextTick(() => {
+          QrCode.toCanvas(this.$refs.myCanvas, url)
+        })
+      } else {
+        this.$message.warning('该用户还未上传头像!')
+      }
     }
   }
 }

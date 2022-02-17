@@ -15,6 +15,7 @@
       <i class="el-icon-plus" />
     </el-upload>
     <el-progress
+      v-if="showPercent"
       :percentage="percent"
       style="width: 180px"
     />
@@ -89,6 +90,7 @@ export default {
         return false
       }
       this.$message.success('图片格式和大小都符合要求')
+      this.showPercent = true
       return true // 必须要return true 才可以继续
     },
     upload(params) {
