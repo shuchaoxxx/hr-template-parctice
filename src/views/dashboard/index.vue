@@ -7,6 +7,8 @@
     </PageTools>
     <!-- <UploadExcel></UploadExcel> -->
 
+    <ImageUpload />
+
   </div>
 </template>
 
@@ -16,7 +18,7 @@ import { IsCheckTimeOut } from '@/utils/request'
 
 export default {
   name: 'Dashboard',
-  components: {},
+  components: { },
   computed: {
     ...mapGetters([
       'name'
