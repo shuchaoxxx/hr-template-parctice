@@ -80,7 +80,7 @@ router.beforeEach(async(to, from, next) => {
         const routes = await store.dispatch('permission/filterRoutes', roles.menus) // 筛选出用户可以使用的动态路由权限
         // routes就是筛选之后得到的动态路由
         // 动态路由，添加到路由表中，默认的只有静态路由，没有动态路由
-        router.addRoutes(routes) // 添加动态路由到路由表
+        router.addRoutes([...routes, { path: '*', redirect: '/404', hidden: true }]) // 添加动态路由到路由表
         next(to.path) // 必须使用next（to.path）
       } else {
         next()
