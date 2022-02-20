@@ -18,6 +18,7 @@ import '@/permission' // permission control
 import * as directives from '@/directives'
 import * as filters from '@/filters'
 import Components from '@/components'
+import checkPermission from '@/mixin/checkPermission'
 
 /**
  * If you don't want to use mock-server
@@ -40,7 +41,7 @@ Object.keys(directives).forEach(key => {
 Object.keys(filters).forEach((key) => {
   Vue.filter(key, filters[key])
 })
-
+Vue.mixin(checkPermission)
 Vue.config.productionTip = false
 Vue.use(Components)
 new Vue({
