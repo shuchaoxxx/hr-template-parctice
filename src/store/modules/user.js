@@ -40,7 +40,7 @@ const actions = {
     const result = await getUserInfo() // 返回经过响应拦截器处理后的数据
     const baseInfo = await getUserDetailById(result.userId)
     context.commit('getUserInfo', { ...result, ...baseInfo })
-    return result // 后面要使用
+    return result // 后面要使用 做动态权限要使用里面的menus
   }
 }
 export default {

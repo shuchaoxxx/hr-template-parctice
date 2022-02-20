@@ -76,9 +76,15 @@ router.beforeEach(async(to, from, next) => {
       next('/') // 有token，并且是去登录页，说明登陆过，已进入了页面，即放行过，就是else里面获取过用户信息。再进入登录页，进入主页就可以不用获取了。
     } else {
       if (!store.getters.userId) {
-        await store.dispatch('user/getUserInfo')
+        const { roles } = await store.dispatch('user/getUserInfo')
+        const routes = await store.dispatch('permission/filterRoutes', roles.menus) // 筛选出用户可以使用的动态路由权限
+        // routes就是筛选之后得到的动态路由
+        // 动态路由，添加到路由表中，默认的只有静态路由，没有动态路由
+        router.addRoutes(routes) // 添加动态路由到路由表
+        next(to.path) // 必须使用next（to.path）
+      } else {
+        next()
       }
-      next()
     }
   } else {
     if (whiteList.indexOf(to.path) > -1) {

@@ -1,7 +1,7 @@
 import Layout from '@/layout'
 export default {
   path: '/setting',
-  name: 'setting', // 给路由规则添加一个name
+  name: 'settings', // 给路由规则添加一个name
   component: Layout,
   children: [
     {

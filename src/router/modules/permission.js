@@ -1,7 +1,7 @@
 import Layout from '@/layout'
 export default {
   path: '/permission',
-  name: 'permission', // 给路由规则添加一个name
+  name: 'permissions', // 给路由规则添加一个name
   component: Layout,
   children: [
     {

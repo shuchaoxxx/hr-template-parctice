@@ -54,6 +54,7 @@ export default {
     async btnOK() {
       await assignRoles({ id: this.userId, roleIds: this.roleIds })
       this.$emit('update:showRoleDialog', false)
+      this.$message.success('角色分配成功')
     },
     btnCancel() {
       this.roleIds = [] // 取消时重置数组，在重新打开页面时，会重新渲染角色
