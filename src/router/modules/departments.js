@@ -8,6 +8,7 @@ export default {
       path: '',
       component: () => import('@/views/departments'),
       // meta 路由元信息，存储任意的对象
+      name: 'departments',
       meta: {
         title: '组织架构',
         icon: 'tree'

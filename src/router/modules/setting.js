@@ -7,7 +7,8 @@ export default {
     {
       path: '',
       component: () => import('@/views/setting'),
-      // meta 路由元信息，存储任意的对象
+      // meta 路由元信息，存储任意的对象,
+      name: 'settings',
       meta: {
         title: '公司设置',
         icon: 'setting'

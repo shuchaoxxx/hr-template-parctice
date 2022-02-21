@@ -11,7 +11,6 @@ import '@/styles/index.scss' // global css
 import App from './App'
 import store from './store'
 import router from './router'
-import i18n from './lang'
 
 import '@/icons' // icon
 import '@/permission' // permission control
@@ -20,6 +19,7 @@ import * as directives from '@/directives'
 import * as filters from '@/filters'
 import Components from '@/components'
 import checkPermission from '@/mixin/checkPermission'
+import i18n from '@/lang'
 
 /**
  * If you don't want to use mock-server
@@ -35,7 +35,9 @@ import checkPermission from '@/mixin/checkPermission'
 // Vue.use(ElementUI)
 
 //  element-ui自定义组件的注册、还有自定义语言包的使用
-Vue.use(ElementUI, { i18n: (key, value) => i18n.t(key, value) })
+Vue.use(ElementUI, {
+  i18n: (key, value) => i18n.t(key, value)
+})
 
 // Object.keys用来遍历对象，把对象的键形成一个数组。
 Object.keys(directives).forEach(key => {
